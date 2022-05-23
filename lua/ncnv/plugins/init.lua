@@ -118,6 +118,14 @@ packer.startup(function(use)
         end,
     })
 
+    use({
+        'folke/trouble.nvim',
+        event = { 'BufRead', 'BufNewFile' },
+        config = function()
+            require('ncnv.plugins.config.trouble')
+        end,
+    })
+
     ------------------------
     -- Syntax / Languange --
     ------------------------
