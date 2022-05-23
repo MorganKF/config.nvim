@@ -8,7 +8,6 @@ require('nvim-lsp-installer').setup({})
 require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp = require('cmp')
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local luasnip = require('luasnip')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'sumneko_lua' }
@@ -79,4 +78,8 @@ cmp.setup({
     },
 })
 
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+local preset, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+
+if present then
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+end
