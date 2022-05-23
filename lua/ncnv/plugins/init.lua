@@ -5,9 +5,6 @@ if not present then
     return false
 end
 
--- NCNV global namespace
-_G.ncnv = {}
-
 packer.startup(function(use)
     -- Lua function library
     use({ 'nvim-lua/plenary.nvim' })
