@@ -9,9 +9,6 @@ end
 _G.ncnv = {}
 
 packer.startup(function(use)
-    ---------
-    -- 
-    ---------
     -- Lua function library
     use({ 'nvim-lua/plenary.nvim' })
 
@@ -58,6 +55,7 @@ packer.startup(function(use)
     use({
         'nvim-telescope/telescope.nvim',
         wants = 'nvim-telescope/telescope-fzf-native.nvim',
+        after = 'nvim-telescope/telescope-fzf-native.nvim',
         config = function()
             require('ncnv.plugins.config.telescope')
         end,
