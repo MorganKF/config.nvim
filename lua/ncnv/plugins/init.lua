@@ -54,8 +54,6 @@ packer.startup(function(use)
     -- Prompt w/ native fzf
     use({
         'nvim-telescope/telescope.nvim',
-        wants = 'nvim-telescope/telescope-fzf-native.nvim',
-        after = 'nvim-telescope/telescope-fzf-native.nvim',
         config = function()
             require('ncnv.plugins.config.telescope')
         end,
