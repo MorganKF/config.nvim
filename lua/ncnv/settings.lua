@@ -17,9 +17,6 @@ vim.opt.history = 1000
 vim.opt.undofile = true
 vim.opt.scrolljump = 5
 vim.opt.updatetime = 300
-vim.opt.signcolumn = 'yes'
-vim.opt.shortmess = vim.o.shortmess .. 'c'
-vim.opt.backup = false
 vim.opt.writebackup = false
 vim.cmd('filetype plugin indent on')
 
