@@ -11,3 +11,5 @@ treesitter.setup({
         additional_vim_regex_highlighting = false,
     },
 })
+
+vim.opt.syntax = "off"
