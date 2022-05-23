@@ -5,15 +5,24 @@ if not present then
     return false
 end
 
+-- NCNV global namespace
+_G.ncnv = {}
+
 packer.startup(function(use)
-    -- Lua library
+    ---------
+    -- 
+    ---------
+    -- Lua function library
     use({ 'nvim-lua/plenary.nvim' })
 
     -- Benchmarks and caching
     use({ 'lewis6991/impatient.nvim' })
 
     -- Keeps packer updated
-    use({ 'wbthomason/packer.nvim' })
+    use({
+        'wbthomason/packer.nvim',
+        event = 'VimEnter',
+    })
 
     --------
     -- UI --
@@ -37,21 +46,34 @@ packer.startup(function(use)
         end,
     })
 
-    -- Fuzy finding, grep, and file browser
+    -- Git status & actions
+    use({
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end,
+    })
+
+    -- Prompt w/ native fzf
     use({
         'nvim-telescope/telescope.nvim',
+        wants = 'nvim-telescope/telescope-fzf-native.nvim',
         config = function()
             require('ncnv.plugins.config.telescope')
         end,
     })
+
     use({
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make',
-        requires = { 'nvim-telescope/telescope.nvim' },
+        requires = 'nvim-telescope/telescope.nvim',
     })
 
     -- Draws indent lines
-    use({ 'lukas-reineke/indent-blankline.nvim' })
+    use({
+        'lukas-reineke/indent-blankline.nvim',
+        event = 'BufRead',
+    })
 
     -- Fast statusline
     use({
@@ -76,6 +98,29 @@ packer.startup(function(use)
     -- LSP --
     ---------
 
+    use({
+        'williamboman/nvim-lsp-installer',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'saadparwaiz1/cmp_luasnip',
+        'L3MON4D3/LuaSnip',
+        {
+            'neovim/nvim-lspconfig',
+            config = function()
+                require('ncnv.plugins.config.lspconfig')
+            end,
+        },
+    })
+
+    use({
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        wants = 'lewis6991/gitsigns.nvim',
+        config = function()
+            require('ncnv.plugins.config.null-ls')
+        end,
+    })
+
     ------------------------
     -- Syntax / Languange --
     ------------------------
@@ -83,6 +128,8 @@ packer.startup(function(use)
     -- Better syntax highlighting
     use({
         'nvim-treesitter/nvim-treesitter',
+        event = { 'BufRead', 'BufNewFile' },
+        run = ':TSUpdate',
         config = function()
             require('ncnv.plugins.config.treesitter')
         end,
