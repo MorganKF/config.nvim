@@ -153,6 +153,14 @@ packer.startup(function(use)
         end,
     })
 
+    --Auto close pairs
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup({})
+        end,
+    })
+
     -- Generate comments
     use({
         'numToStr/Comment.nvim',
