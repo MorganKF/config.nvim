@@ -131,7 +131,6 @@ packer.startup(function(use)
     -- Better syntax highlighting
     use({
         'nvim-treesitter/nvim-treesitter',
-        event = { 'BufRead', 'BufNewFile' },
         run = ':TSUpdate',
         config = function()
             require('ncnv.plugins.config.treesitter')
