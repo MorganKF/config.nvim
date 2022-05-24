@@ -11,4 +11,4 @@ vim.keymap.set('', '<esc><esc>', '<cmd>noh<CR><esc>', { noremap = true, silent =
 -- Buffer navigation
 vim.keymap.set('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', 'kb', '<cmd>pdelete<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'kb', '<cmd>bdelete<CR>', { noremap = true, silent = true })
