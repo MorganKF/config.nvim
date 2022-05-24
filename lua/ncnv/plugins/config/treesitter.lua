@@ -5,11 +5,8 @@ if not present then
 end
 
 treesitter.setup({
-    ensure_installed = { 'javascript', 'typescript', 'tsx', 'lua', 'rust' },
+    ensure_installed = { 'javascript', 'typescript', 'tsx', 'lua', 'rust', 'cpp', 'c', 'css', 'json' },
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false,
     },
 })
-
-vim.opt.syntax = "off"

@@ -9,8 +9,9 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local luadev = require('lua-dev')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'sumneko_lua' }
+local servers = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'jsonls', 'cssls' }
 
 local on_attach = function(_, bufnr)
     local opts = { buffer = bufnr }
@@ -32,11 +33,23 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
 end
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-    })
+    if lsp == 'sumneko_lua' then
+        lspconfig[lsp].setup(luadev.setup({
+            lspconfig = {
+                capabilities = capabilities,
+                on_attach = on_attach,
+            }
+        }))
+    else
+        lspconfig[lsp].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+    end
+
 end
 
 cmp.setup({
