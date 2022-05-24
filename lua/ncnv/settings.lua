@@ -22,7 +22,6 @@ vim.cmd('filetype plugin indent on')
 
 -- UI
 vim.opt.termguicolors = true
-vim.cmd('colorscheme github_dark_default')
 
 -- Return to last edit position
 vim.api.nvim_create_autocmd('BufReadPost', {
