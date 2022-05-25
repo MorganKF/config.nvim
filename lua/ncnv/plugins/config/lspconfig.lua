@@ -41,7 +41,7 @@ for _, lsp in ipairs(servers) do
             lspconfig = {
                 capabilities = capabilities,
                 on_attach = on_attach,
-            }
+            },
         }))
     else
         lspconfig[lsp].setup({
@@ -49,7 +49,6 @@ for _, lsp in ipairs(servers) do
             on_attach = on_attach,
         })
     end
-
 end
 
 cmp.setup({
@@ -61,7 +60,7 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-t>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping.complete({}),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
@@ -91,7 +90,7 @@ cmp.setup({
     },
 })
 
-local preset, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+local present, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 
 if present then
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))

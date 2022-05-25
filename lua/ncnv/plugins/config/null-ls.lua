@@ -12,7 +12,7 @@ null_ls.setup({
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.code_actions.eslint,
         null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.formatting.eslint
+        null_ls.builtins.formatting.eslint,
     },
     on_attach = function(lsp_client, bufnr)
         if lsp_client.supports_method('textDocument/formatting') then
