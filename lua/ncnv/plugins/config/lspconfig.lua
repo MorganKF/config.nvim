@@ -7,6 +7,8 @@ end
 require('nvim-lsp-installer').setup({})
 require('luasnip.loaders.from_vscode').lazy_load()
 
+vim.opt.completeopt = 'menuone,noselect'
+
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local luadev = require('lua-dev')
@@ -71,7 +73,28 @@ for _, lsp in ipairs(servers) do
     end
 end
 
+local function border(hl_name)
+    return {
+        { '╭', hl_name },
+        { '─', hl_name },
+        { '╮', hl_name },
+        { '│', hl_name },
+        { '╯', hl_name },
+        { '─', hl_name },
+        { '╰', hl_name },
+        { '│', hl_name },
+    }
+end
+
 cmp.setup({
+    window = {
+        completion = {
+            border = border('CmpBorder'),
+        },
+        documentation = {
+            border = border('CmpDocBorder'),
+        },
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
