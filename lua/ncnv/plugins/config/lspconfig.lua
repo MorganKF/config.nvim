@@ -10,7 +10,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local luadev = require('lua-dev')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'jsonls', 'cssls' }
 
 local on_attach = function(_, bufnr)
@@ -38,7 +37,23 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { 'markdown', 'plaintext' },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    resolveSupport = {
+        properties = {
+            'documentation',
+            'detail',
+            'additionalTextEdits',
+        },
+    },
+}
 
 for _, lsp in ipairs(servers) do
     if lsp == 'sumneko_lua' then
