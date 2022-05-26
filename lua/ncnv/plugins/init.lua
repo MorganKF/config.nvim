@@ -92,6 +92,14 @@ packer.startup(function(use)
         tag = 'nightly',
     })
 
+    -- Improve nvim select and input UI
+    use({
+        'stevearc/dressing.nvim',
+        config = function()
+            require('dressing').setup({})
+        end,
+    })
+
     ---------
     -- LSP --
     ---------
@@ -177,6 +185,15 @@ packer.startup(function(use)
         'phaazon/hop.nvim',
         config = function()
             require('ncnv.plugins.config.hop')
+        end,
+    })
+
+    -- Highlight and search todo comments
+    use({
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('todo-comments').setup({})
         end,
     })
 end)
