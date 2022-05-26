@@ -29,10 +29,10 @@ packer.startup(function(use)
     use({
         'projekt0n/github-nvim-theme',
         config = function()
-            require("github-theme").setup({
-                theme_style = "dark_default",
+            require('github-theme').setup({
+                theme_style = 'dark_default',
             })
-        end
+        end,
     })
 
     -- Buffer & tabline
@@ -100,6 +100,7 @@ packer.startup(function(use)
         'williamboman/nvim-lsp-installer',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
         'saadparwaiz1/cmp_luasnip',
         'folke/lua-dev.nvim',
         'rafamadriz/friendly-snippets',
