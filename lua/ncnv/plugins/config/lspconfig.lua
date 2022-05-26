@@ -113,8 +113,9 @@ cmp.setup({
     },
 })
 
+---@diagnostic disable-next-line: redefined-local
 local present, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 
 if present then
-    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+    cmp.event:on(cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }), 'confirm_done')
 end
