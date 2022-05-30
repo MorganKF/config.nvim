@@ -111,6 +111,7 @@ packer.startup(function(use)
         'hrsh7th/cmp-buffer',
         'saadparwaiz1/cmp_luasnip',
         'folke/lua-dev.nvim',
+        'jose-elias-alvarez/typescript.nvim',
         'rafamadriz/friendly-snippets',
         'L3MON4D3/LuaSnip',
         {

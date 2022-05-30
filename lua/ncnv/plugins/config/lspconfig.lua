@@ -65,6 +65,13 @@ for _, lsp in ipairs(servers) do
                 on_attach = on_attach,
             },
         }))
+    elseif lsp == 'tsserver' then
+        require('typescript').setup({
+            server = {
+                capabilities = capabilities,
+                on_attach = on_attach,
+            },
+        })
     else
         lspconfig[lsp].setup({
             capabilities = capabilities,
