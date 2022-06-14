@@ -72,6 +72,26 @@ for _, lsp in ipairs(servers) do
                 on_attach = on_attach,
             },
         })
+    elseif lsp == 'rust_analyzer' then
+        require('rust-tools').setup({
+            server = {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = {
+                    ['rust-analyzer'] = {
+                        cargo = {
+                            loadOutDirsFromCheck = true,
+                        },
+                        procMacro = {
+                            enable = true,
+                        },
+                        checkOnSave = {
+                            command = 'clippy',
+                        },
+                    },
+                },
+            },
+        })
     else
         lspconfig[lsp].setup({
             capabilities = capabilities,

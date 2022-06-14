@@ -112,6 +112,7 @@ packer.startup(function(use)
         'saadparwaiz1/cmp_luasnip',
         'folke/lua-dev.nvim',
         'jose-elias-alvarez/typescript.nvim',
+        'simrat39/rust-tools.nvim',
         'rafamadriz/friendly-snippets',
         'L3MON4D3/LuaSnip',
         {
