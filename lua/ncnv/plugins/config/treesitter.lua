@@ -5,7 +5,7 @@ if not present then
 end
 
 treesitter.setup({
-    ensure_installed = { 'javascript', 'typescript', 'tsx', 'lua', 'rust', 'cpp', 'c', 'css', 'json' },
+    ensure_installed = { 'javascript', 'typescript', 'tsx', 'lua', 'rust', 'cpp', 'c', 'css', 'json', 'python' },
     highlight = {
         enable = true,
     },
