@@ -12,7 +12,7 @@ vim.opt.completeopt = 'menuone,noselect'
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local luadev = require('lua-dev')
-local servers = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'jsonls', 'cssls' }
+local servers = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'jsonls', 'cssls', 'jedi_language_server', 'clangd' }
 
 local on_attach = function(_, bufnr)
     local opts = { buffer = bufnr }
