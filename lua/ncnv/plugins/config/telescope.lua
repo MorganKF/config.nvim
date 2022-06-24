@@ -6,9 +6,10 @@ end
 
 telescope.setup({
     defaults = {
-        file_ignore_patterns = { 'node_modules' },
+        file_ignore_patterns = { 'node_modules', '.git', '.cache', '%.o', '%.a', '%.dll', '%.so', '%.dylib', '%.png' },
         vimgrep_arguments = {
             'rg',
+            '--hidden',
             '--color=never',
             '--no-heading',
             '--with-filename',
@@ -50,6 +51,10 @@ telescope.setup({
 require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+local find_files = function()
+    builtin.find_files({ hidden = true })
+end
+
+vim.keymap.set('n', '<leader>ff', find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.current_buffer_fuzzy_find, {})
