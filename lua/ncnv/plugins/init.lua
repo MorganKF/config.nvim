@@ -190,6 +190,14 @@ packer.startup(function(use)
         end,
     })
 
+    -- Use editorconfig
+    use({
+        'gpanders/editorconfig.nvim',
+        config = function()
+            require('editorconfig')
+        end,
+    })
+
     -- Highlight and search todo comments
     use({
         'folke/todo-comments.nvim',
