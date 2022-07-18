@@ -12,7 +12,18 @@ vim.opt.completeopt = 'menuone,noselect'
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local luadev = require('lua-dev')
-local servers = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'jsonls', 'cssls', 'jedi_language_server', 'clangd' }
+local servers = {
+    'sumneko_lua',
+    'rust_analyzer',
+    'tsserver',
+    'jsonls',
+    'cssls',
+    'jedi_language_server',
+    'clangd',
+    'svelte',
+    'emmet_ls',
+    'tailwindcss',
+}
 
 local on_attach = function(_, bufnr)
     local opts = { buffer = bufnr }
@@ -91,6 +102,12 @@ for _, lsp in ipairs(servers) do
                     },
                 },
             },
+        })
+    elseif lsp == 'emmet_ls' then
+        lspconfig.emmet_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'javascriptreact', 'typescriptreact' },
         })
     else
         lspconfig[lsp].setup({

@@ -6,7 +6,18 @@ end
 
 telescope.setup({
     defaults = {
-        file_ignore_patterns = { 'node_modules', '.git', '.cache', '%.o', '%.a', '%.dll', '%.so', '%.dylib', '%.png' },
+        file_ignore_patterns = {
+            'node_modules',
+            '.git',
+            '.cache',
+            '%.o',
+            '%.a',
+            '%.dll',
+            '%.so',
+            '%.dylib',
+            '%.png',
+            'target',
+        },
         vimgrep_arguments = {
             'rg',
             '--hidden',
