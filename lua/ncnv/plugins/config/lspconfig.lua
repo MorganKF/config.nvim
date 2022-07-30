@@ -4,7 +4,7 @@ if not present then
     return
 end
 
-require('nvim-lsp-installer').setup({})
+require('mason').setup()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = 'menuone,noselect'
@@ -21,7 +21,6 @@ local servers = {
     'jedi_language_server',
     'clangd',
     'svelte',
-    'emmet_ls',
     'tailwindcss',
 }
 
@@ -103,12 +102,6 @@ for _, lsp in ipairs(servers) do
                 },
             },
         })
-    elseif lsp == 'emmet_ls' then
-        lspconfig.emmet_ls.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'javascriptreact', 'typescriptreact' },
-        })
     else
         lspconfig[lsp].setup({
             capabilities = capabilities,
@@ -178,6 +171,15 @@ cmp.setup({
         { name = 'luasnip' },
         { name = 'buffer' },
     },
+})
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+    callback = function()
+        if luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] and not luasnip.session.jump_active then
+            luasnip.unlink_current()
+        end
+    end,
+    group = ncnv.augroup,
 })
 
 ---@diagnostic disable-next-line: redefined-local

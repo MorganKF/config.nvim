@@ -105,7 +105,7 @@ packer.startup(function(use)
     ---------
 
     use({
-        'williamboman/nvim-lsp-installer',
+        'williamboman/mason.nvim',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
