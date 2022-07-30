@@ -5,6 +5,16 @@ if not present then
     return false
 end
 
+function load(path, setup)
+    local present, plug = pcall(require, path)
+
+    if not present then
+        return
+    end
+
+    plug.setup(setup)
+end
+
 packer.startup(function(use)
     -- Lua function library
     use({ 'nvim-lua/plenary.nvim' })
@@ -29,7 +39,7 @@ packer.startup(function(use)
     use({
         'projekt0n/github-nvim-theme',
         config = function()
-            require('github-theme').setup({
+            load('github-theme', {
                 theme_style = 'dark_default',
             })
         end,
@@ -49,7 +59,7 @@ packer.startup(function(use)
     use({
         'lewis6991/gitsigns.nvim',
         config = function()
-            require('gitsigns').setup()
+            load('gitsigns', {})
         end,
     })
 
@@ -96,7 +106,7 @@ packer.startup(function(use)
     use({
         'stevearc/dressing.nvim',
         config = function()
-            require('dressing').setup({})
+            load('dressing', {})
         end,
     })
 
@@ -167,12 +177,7 @@ packer.startup(function(use)
     })
 
     --Auto close pairs
-    use({
-        'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup({})
-        end,
-    })
+    use({ 'windwp/nvim-autopairs' })
 
     -- Generate comments
     use({
@@ -190,20 +195,15 @@ packer.startup(function(use)
         end,
     })
 
-    -- Use editorconfig
-    use({
-        'gpanders/editorconfig.nvim',
-        config = function()
-            require('editorconfig')
-        end,
-    })
+    -- Detect file settings
+    use({ 'tpope/vim-sleuth' })
 
     -- Highlight and search todo comments
     use({
         'folke/todo-comments.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
-            require('todo-comments').setup({})
+            load('todo-comments', {})
         end,
     })
 end)
