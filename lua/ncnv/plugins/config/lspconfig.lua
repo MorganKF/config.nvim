@@ -186,5 +186,5 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 local present, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 
 if present then
-    cmp.event:on(cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }), 'confirm_done')
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 end
