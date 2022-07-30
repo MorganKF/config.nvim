@@ -12,6 +12,7 @@ vim.opt.completeopt = 'menuone,noselect'
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local luadev = require('lua-dev')
+local lspkind = require('lspkind')
 local servers = {
     'sumneko_lua',
     'rust_analyzer',
@@ -110,32 +111,22 @@ for _, lsp in ipairs(servers) do
     end
 end
 
-local function border(hl_name)
-    return {
-        { '╭', hl_name },
-        { '─', hl_name },
-        { '╮', hl_name },
-        { '│', hl_name },
-        { '╯', hl_name },
-        { '─', hl_name },
-        { '╰', hl_name },
-        { '│', hl_name },
-    }
-end
-
 cmp.setup({
     window = {
         completion = {
-            border = border('CmpBorder'),
+            border = 'rounded',
         },
         documentation = {
-            border = border('CmpDocBorder'),
+            border = 'rounded',
         },
     },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
+    },
+    formatting = {
+        format = lspkind.cmp_format(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-t>'] = cmp.mapping.scroll_docs(-4),

@@ -41,6 +41,7 @@ packer.startup(function(use)
         config = function()
             load('github-theme', {
                 theme_style = 'dark_default',
+                dark_float = true,
             })
         end,
     })
@@ -116,6 +117,7 @@ packer.startup(function(use)
 
     use({
         'williamboman/mason.nvim',
+        'onsails/lspkind.nvim',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
