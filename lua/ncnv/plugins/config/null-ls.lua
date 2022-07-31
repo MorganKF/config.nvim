@@ -19,7 +19,7 @@ null_ls.setup({
         null_ls.builtins.formatting.eslint_d.with({
             extra_filetypes = { 'svelte' },
         }),
-        null_ls.builtins.formatting.prettier.with({
+        null_ls.builtins.formatting.prettierd.with({
             extra_filetypes = { 'svelte' },
         }),
     },
