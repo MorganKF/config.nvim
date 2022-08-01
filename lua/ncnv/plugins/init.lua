@@ -179,7 +179,18 @@ packer.startup(function(use)
     })
 
     --Auto close pairs
-    use({ 'windwp/nvim-autopairs' })
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            load('nvim-autopairs', {})
+        end,
+    })
+    use({
+        'windwp/nvim-ts-autotag',
+        config = function()
+            load('nvim-ts-autotag', {})
+        end,
+    })
 
     -- Generate comments
     use({
