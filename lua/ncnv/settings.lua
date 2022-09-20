@@ -3,6 +3,7 @@ vim.opt.encoding = 'utf-8'
 vim.opt.wrap = false
 vim.opt.hlsearch = true
 vim.opt.number = true
+vim.cmd('syntax enable')
 
 -- Allow scrolling with scroll wheel
 vim.opt.mouse = 'a'
