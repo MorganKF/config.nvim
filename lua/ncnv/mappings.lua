@@ -1,7 +1,7 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Emulate windows copy and cut
 vim.keymap.set('v', '<C-c>', '"+y<CR>', opts)
@@ -20,3 +20,15 @@ vim.keymap.set('n', '<C-up>', '<C-w><up>', opts)
 vim.keymap.set('n', '<C-down>', '<C-w><down>', opts)
 vim.keymap.set('n', '<C-right>', '<C-w><right>', opts)
 vim.keymap.set('n', '<C-left>', '<C-w><left>', opts)
+
+-- Close quickfix windows
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    callback = function()
+        vim.keymap.set('n', '<CR>', '<CR><CMD>cclose<CR>', {
+            silent = true,
+            buffer = 0,
+        })
+    end,
+    group = ncnv.augroup,
+})
