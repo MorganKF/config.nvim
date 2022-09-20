@@ -18,6 +18,7 @@ treesitter.setup({
         'python',
         'svelte',
     },
+    auto_install = true,
     highlight = {
         enable = true,
     },
