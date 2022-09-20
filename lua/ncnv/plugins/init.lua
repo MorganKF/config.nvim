@@ -5,7 +5,7 @@ if not present then
     return false
 end
 
-function load(path, setup)
+function configure(path, setup)
     local present, plug = pcall(require, path)
 
     if not present then
@@ -39,7 +39,7 @@ packer.startup(function(use)
     use({
         'projekt0n/github-nvim-theme',
         config = function()
-            load('github-theme', {
+            configure('github-theme', {
                 theme_style = 'dark_default',
                 dark_float = true,
             })
@@ -60,7 +60,7 @@ packer.startup(function(use)
     use({
         'lewis6991/gitsigns.nvim',
         config = function()
-            load('gitsigns', {})
+            configure('gitsigns', {})
         end,
     })
 
@@ -82,6 +82,9 @@ packer.startup(function(use)
     use({
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufRead',
+        config = function()
+            configure('indent_blankline', {})
+        end,
     })
 
     -- Fast statusline
@@ -107,7 +110,7 @@ packer.startup(function(use)
     use({
         'stevearc/dressing.nvim',
         config = function()
-            load('dressing', {})
+            configure('dressing', {})
         end,
     })
 
@@ -182,13 +185,13 @@ packer.startup(function(use)
     use({
         'windwp/nvim-autopairs',
         config = function()
-            load('nvim-autopairs', {})
+            configure('nvim-autopairs', {})
         end,
     })
     use({
         'windwp/nvim-ts-autotag',
         config = function()
-            load('nvim-ts-autotag', {})
+            configure('nvim-ts-autotag', {})
         end,
     })
 
@@ -216,7 +219,7 @@ packer.startup(function(use)
         'folke/todo-comments.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
-            load('todo-comments', {})
+            configure('todo-comments', {})
         end,
     })
 end)
