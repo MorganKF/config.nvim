@@ -125,7 +125,7 @@ packer.startup(function(use)
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'saadparwaiz1/cmp_luasnip',
-        'folke/lua-dev.nvim',
+        'folke/neodev.nvim',
         'jose-elias-alvarez/typescript.nvim',
         'simrat39/rust-tools.nvim',
         'rafamadriz/friendly-snippets',

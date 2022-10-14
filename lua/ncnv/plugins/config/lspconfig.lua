@@ -11,7 +11,7 @@ vim.opt.completeopt = 'menuone,noselect'
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local luadev = require('lua-dev')
+local luadev = require('neodev')
 local lspkind = require('lspkind')
 local servers = {
     'sumneko_lua',
