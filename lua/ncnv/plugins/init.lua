@@ -133,6 +133,7 @@ packer.startup(function(use)
         {
             'neovim/nvim-lspconfig',
             config = function()
+                configure('neodev', {})
                 require('ncnv.plugins.config.lspconfig')
             end,
         },

@@ -50,7 +50,7 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem = {
     documentationFormat = { 'markdown', 'plaintext' },
     snippetSupport = true,
@@ -69,14 +69,7 @@ capabilities.textDocument.completion.completionItem = {
 }
 
 for _, lsp in ipairs(servers) do
-    if lsp == 'sumneko_lua' then
-        lspconfig[lsp].setup(luadev.setup({
-            lspconfig = {
-                capabilities = capabilities,
-                on_attach = on_attach,
-            },
-        }))
-    elseif lsp == 'tsserver' then
+    if lsp == 'tsserver' then
         require('typescript').setup({
             server = {
                 capabilities = capabilities,
