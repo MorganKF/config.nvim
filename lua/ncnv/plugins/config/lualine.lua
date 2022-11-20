@@ -16,12 +16,12 @@ lualine.setup({
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'coc', 'nvim_diagnostic' } } },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = {},
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
     },
     tabline = {},
-    extensions = {},
+    extensions = { 'nvim-tree' },
 })
