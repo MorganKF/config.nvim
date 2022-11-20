@@ -5,7 +5,7 @@ vim.opt.hlsearch = true
 vim.opt.number = true
 vim.cmd('syntax enable')
 
--- Allow scrolling with scroll wheel
+-- Enable mouse support where available
 vim.opt.mouse = 'a'
 
 -- Tabs

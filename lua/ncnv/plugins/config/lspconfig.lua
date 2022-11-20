@@ -5,13 +5,13 @@ if not present then
 end
 
 require('mason').setup()
+require('mason-lspconfig').setup()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = 'menuone,noselect'
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local luadev = require('neodev')
 local lspkind = require('lspkind')
 local servers = {
     'sumneko_lua',

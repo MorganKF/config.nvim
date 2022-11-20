@@ -120,6 +120,7 @@ packer.startup(function(use)
 
     use({
         'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
         'onsails/lspkind.nvim',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
