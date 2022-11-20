@@ -5,3 +5,4 @@ if not present then
 end
 
 require('mini.surround').setup({})
+require('mini.comment').setup({})

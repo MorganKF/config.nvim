@@ -197,14 +197,6 @@ packer.startup(function(use)
         end,
     })
 
-    -- Generate comments
-    use({
-        'numToStr/Comment.nvim',
-        config = function()
-            require('ncnv.plugins.config.comment')
-        end,
-    })
-
     -- More motions
     use({
         'phaazon/hop.nvim',
