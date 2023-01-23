@@ -1,1 +1,1 @@
-require('ncnv')
+require('config.lazy')
