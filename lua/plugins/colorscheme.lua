@@ -1,5 +1,10 @@
 return {
-    'EdenEast/nightfox.nvim',
+    {
+        'EdenEast/nightfox.nvim',
+        opts = {
+            transparent = true,
+        },
+    },
 
     {
         'LazyVim/LazyVim',
