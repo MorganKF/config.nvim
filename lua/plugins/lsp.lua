@@ -19,7 +19,23 @@ return {
             local nls = require('null-ls')
             return {
                 sources = {
-                    nls.builtins.formatting.prettierd,
+                    nls.builtins.formatting.prettierd.with({
+                        condition = function(utils)
+                            return utils.root_has_file({
+                                'package.json',
+                                '.prettierrc',
+                                '.prettierrc.json',
+                                '.prettierrc.yml',
+                                '.prettierrc.yaml',
+                                '.prettierrc.json5',
+                                '.prettierrc.js',
+                                '.prettierrc.cjs',
+                                'prettier.config.js',
+                                'prettier.config.cjs',
+                                '.prettierrc.toml',
+                            })
+                        end,
+                    }),
                     nls.builtins.formatting.eslint_d.with(eslint_d_config),
                     nls.builtins.formatting.deno_fmt.with({
                         condition = function(utils)
