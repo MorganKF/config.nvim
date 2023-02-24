@@ -1,3 +1,15 @@
+local eslint_d_config = {
+    condition = function(utils)
+        return utils.root_has_file({
+            '.eslintrc.js',
+            '.eslintrc.cjs',
+            '.eslintrc.yaml',
+            '.eslinsrc.yml',
+            '.eslinsrc.json',
+        })
+    end,
+}
+
 return {
     {
         'jose-elias-alvarez/null-ls.nvim',
@@ -8,11 +20,11 @@ return {
             return {
                 sources = {
                     nls.builtins.formatting.prettierd,
-                    nls.builtins.formatting.eslint_d,
+                    nls.builtins.formatting.eslint_d.with(eslint_d_config),
                     nls.builtins.formatting.stylua,
                     nls.builtins.diagnostics.flake8,
-                    nls.builtins.diagnostics.eslint_d,
-                    nls.builtins.code_actions.eslint_d,
+                    nls.builtins.diagnostics.eslint_d.with(eslint_d_config),
+                    nls.builtins.code_actions.eslint_d.with(eslint_d_config),
                 },
             }
         end,
