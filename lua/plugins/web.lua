@@ -17,6 +17,11 @@ return {
                 tsserver = {
                     root_dir = require('lspconfig').util.root_pattern('package.json'),
                     single_file_support = false,
+                    settings = {
+                        completions = {
+                            completeFunctionCalls = true,
+                        },
+                    },
                 },
                 denols = {
                     root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
@@ -45,5 +50,11 @@ return {
                 end,
             },
         },
+    },
+    {
+        'jose-elias-alvarez/null-ls.nvim',
+        opts = function(_, opts)
+            table.insert(opts.sources, require('typescript.extensions.null-ls.code-actions'))
+        end,
     },
 }

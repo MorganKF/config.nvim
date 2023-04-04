@@ -10,9 +10,19 @@ return {
                     position = 'current',
                 })
             end,
-            desc = 'Explorer NeoTree (root dir)',
+            desc = 'Explorer NeoTree',
         },
-        { '<leader>fE', '<cmd>Neotree toggle current<CR>', desc = 'Explorer NeoTree (cwd)' },
+        {
+            '<leader>fE',
+            function()
+                require('neo-tree.command').execute({
+                    toggle = true,
+                    dir = vim.loop.cwd(),
+                    position = 'current',
+                })
+            end,
+            desc = 'Explorer NeoTree (cwd)',
+        },
         { '<leader>e', '<leader>fe', desc = 'Explorer NeoTree (root dir)', remap = true },
         { '<leader>E', '<leader>fE', desc = 'Explorer NeoTree (cwd)', remap = true },
     },
