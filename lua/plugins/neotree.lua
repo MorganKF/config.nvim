@@ -8,9 +8,10 @@ return {
                     toggle = true,
                     dir = require('lazyvim.util').get_root(),
                     position = 'current',
+                    reveal = true,
                 })
             end,
-            desc = 'Explorer NeoTree',
+            desc = 'Explorer NeoTree (root dir)',
         },
         {
             '<leader>fE',
@@ -19,6 +20,7 @@ return {
                     toggle = true,
                     dir = vim.loop.cwd(),
                     position = 'current',
+                    reveal = true,
                 })
             end,
             desc = 'Explorer NeoTree (cwd)',
