@@ -6,7 +6,7 @@ return {
             function()
                 require('neo-tree.command').execute({
                     toggle = true,
-                    dir = require('lazyvim.util').get_root(),
+                    dir = require('lazyvim.util').root.get(),
                     position = 'current',
                     reveal = true,
                 })
