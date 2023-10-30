@@ -1,12 +1,12 @@
 -- better up/down
-vim.keymap.set('n', '<down>', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set('n', '<up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', '<Down>', "v:count ? 'j' : 'gj'", { expr = true, silent = true })
+vim.keymap.set('n', '<Up>', "v:count ? 'k' : 'gk'", { expr = true, silent = true })
 
 -- Split navigation
-vim.keymap.set('n', '<C-up>', '<C-w><up>', {})
-vim.keymap.set('n', '<C-down>', '<C-w><down>', {})
-vim.keymap.set('n', '<C-right>', '<C-w><right>', {})
-vim.keymap.set('n', '<C-left>', '<C-w><left>', {})
+vim.keymap.set('n', '<C-Up>', '<C-w><Up>', {})
+vim.keymap.set('n', '<C-Down>', '<C-w><Down>', {})
+vim.keymap.set('n', '<C-Right>', '<C-w><Right>', {})
+vim.keymap.set('n', '<C-Left>', '<C-w><Left>', {})
 
 -- Resize window using <shift> + arrow keys
 vim.keymap.set('n', '<S-Up>', '<cmd>resize +2<cr>', { desc = 'Increase window height' })
