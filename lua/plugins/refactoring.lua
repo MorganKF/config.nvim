@@ -3,7 +3,7 @@ return {
         'folke/which-key.nvim',
         opts = {
             defaults = {
-                ['<leader>r'] = { name = '+refactor' },
+                ['<leader>r'] = { name = '+refactor/document' },
             },
         },
     },
